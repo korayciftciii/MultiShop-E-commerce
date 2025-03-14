@@ -9,8 +9,8 @@ namespace MultiShop.Catalog.Controllers
     [ApiController]
     public class ProductDetailController : ControllerBase
     {
-        private readonly IProdutDetailService _productDetailService;
-        public ProductDetailController(IProdutDetailService productDetailService)
+        private readonly IProductDetailService _productDetailService;
+        public ProductDetailController(IProductDetailService productDetailService)
         {
            _productDetailService = productDetailService;
         }
