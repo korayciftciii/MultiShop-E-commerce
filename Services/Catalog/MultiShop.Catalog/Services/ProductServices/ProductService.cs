@@ -35,7 +35,7 @@ namespace MultiShop.Catalog.Services.ProductServices
             return _mapper.Map<List<ResultProductDto>>(values);
         }
 
-        public async Task<GetByIdProductDto> GetByIdProductDtoAsync(string id)
+        public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
         {
             var value = await _productCollection.Find<Product>(x => x.ProductId.Equals(id)).FirstOrDefaultAsync();
             return _mapper.Map<GetByIdProductDto>(value);   
