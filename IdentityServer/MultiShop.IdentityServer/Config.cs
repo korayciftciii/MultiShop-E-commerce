@@ -9,7 +9,8 @@ public static class Config
         {
         new ApiResource("resourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
         new ApiResource("resourceDiscount"){Scopes={"DiscountFullPermission"}},
-        new ApiResource("resourceOrder"){Scopes={"OrderFullPermission"}}
+        new ApiResource("resourceOrder"){Scopes={"OrderFullPermission"}},
+        new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
     public static IEnumerable<IdentityResource> IdentityResources => new IdentityResource[]
@@ -23,7 +24,8 @@ public static class Config
         new ApiScope("CatalogFullPermission","Full Authority for catalog operations"),
         new ApiScope("CatalogReadPermission","Reading Authority for catalog"),
         new ApiScope("DiscountFullPermission","Full Authority for Discount operations"),
-        new ApiScope("OrderFullPermission","Full Authority for Order operations")
+        new ApiScope("OrderFullPermission","Full Authority for Order operations"),
+        new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
     };
     public static IEnumerable<Client> Clients => new Client[]
     {
@@ -34,7 +36,7 @@ public static class Config
             ClientName="Multi Shop Visitor User",
             AllowedGrantTypes=GrantTypes.ClientCredentials,
             ClientSecrets={new Secret("multishopsecret".Sha256())},
-            AllowedScopes={"CatalogReadPermission"}
+            AllowedScopes={ "CatalogFullPermission" }
         },
         //manager
         new Client
