@@ -23,15 +23,17 @@ namespace MultiShop.IdentityServer.Controllers
         {
             var values = new ApplicationUser
             {
+                UserName=userRegisterDto.UserName,
                 Name=userRegisterDto.Name,
-                Email=userRegisterDto.Email,
                 Surname=userRegisterDto.Surname,
+                Email = userRegisterDto.Email,
             };
             var result=await _userManager.CreateAsync(values,userRegisterDto.Password);
             if (result.Succeeded)
                 return Ok("The Registration had been completed successfully");
             else
-                return Ok("An error occured while registrating new user"); 
+                return BadRequest(new { errors = result.Errors.Select(e => e.Description).ToList() });
         }
+        
     }
 }
