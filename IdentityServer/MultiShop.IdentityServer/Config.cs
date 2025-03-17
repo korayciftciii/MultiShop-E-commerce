@@ -10,6 +10,7 @@ public static class Config
         new ApiResource("resourceCatalog"){Scopes={"CatalogFullPermission","CatalogReadPermission"}},
         new ApiResource("resourceDiscount"){Scopes={"DiscountFullPermission","DiscountReadPermission"}},
         new ApiResource("resourceOrder"){Scopes={"OrderFullPermission","OrderReadPermission"}},
+        new ApiResource("resourceCargo"){Scopes={"CargoFullPermission","CargoReadPermission"}},
         new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
         };
 
@@ -27,6 +28,8 @@ public static class Config
           new ApiScope("OrderReadPermission","Reading Authority for order"),
         new ApiScope("DiscountFullPermission","Full Authority for Discount operations"),
         new ApiScope("OrderFullPermission","Full Authority for Order operations"),
+        new ApiScope("CargoFullPermission","Full Authority for Cargo operations"),
+        new ApiScope ("CargoReadPermission","Reading Authority for cargo"),
         new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
     };
     public static IEnumerable<Client> Clients => new Client[]
@@ -55,7 +58,15 @@ public static class Config
               ClientName="Multi Shop Admin User",
             AllowedGrantTypes=GrantTypes.ClientCredentials,
             ClientSecrets={new Secret("multishopsecret".Sha256())},
-            AllowedScopes={ "CatalogFullPermission", "CatalogReadPermission","OrderReadPermission","DiscountReadPermission", "DiscountFullPermission", "OrderFullPermission" ,
+            AllowedScopes={ 
+                "CatalogFullPermission",
+                "CatalogReadPermission",
+                "OrderReadPermission",
+                "CargoReadPermission",
+                "DiscountReadPermission",
+                "DiscountFullPermission",
+                "OrderFullPermission" ,
+                "CargoFullPermission" ,
             IdentityServerConstants.LocalApi.ScopeName,
             IdentityServerConstants.StandardScopes.Email,
             IdentityServerConstants.StandardScopes.OpenId,
