@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UILayout/_UILayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row px-xl-5">
+        <div class="col-12">
+            <nav class="breadcrumb bg-light mb-30">
+                <a class="breadcrumb-item text-dark" asp-controller="Home" asp-action="Index" >Home</a>
+                <a class="breadcrumb-item text-dark" asp-controller="ProductList" asp-action="Index" >Products</a>
+                <span class="breadcrumb-item active">Product's Detail</span>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pb-5">
+    <div class="row px-xl-5">
+        @await Component.InvokeAsync("_ProductDetailImageSlider")
+
+       @await Component.InvokeAsync("_ProductDetailsCard")
+    </div>
+    <div class="row px-xl-5">
+        <div class="col">
+            <div class="bg-light p-30">
+                <div class="nav nav-tabs mb-4">
+                    <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a>
+                    <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews (0)</a>
+                </div>
+                <div class="tab-content">
+
+                    @await Component.InvokeAsync("_ProductDetailDescription")
+                    @await Component.InvokeAsync("_ProductDetailInformation")
+                    @await Component.InvokeAsync("_ProductDetailReviews")
+                 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("_FeaturedProductSlider")  

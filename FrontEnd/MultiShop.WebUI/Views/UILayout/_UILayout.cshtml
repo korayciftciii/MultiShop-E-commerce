@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+ 
+@await Component.InvokeAsync("_HeadUILayout")
+
+<body>
+    <!-- Topbar Start -->
+@await Component.InvokeAsync("_TopBar")
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+ @await Component.InvokeAsync("_Navbar")
+    <!-- Navbar End -->
+    <!-- Breadcrumb Start -->
+    @RenderBody()
+ 
+    <!-- Breadcrumb End -->
+    <!-- Contact Start -->
+ 
+    <!-- Contact End -->
+    <!-- Footer Start -->
+    @await Component.InvokeAsync("_Footer")
+    <!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+ @await Component.InvokeAsync("_ScriptUILayout")
+</body>
+
+</html>
