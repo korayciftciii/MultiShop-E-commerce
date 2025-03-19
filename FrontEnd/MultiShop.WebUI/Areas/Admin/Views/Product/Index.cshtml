@@ -1,0 +1,53 @@
+﻿@model List<ResultProductDto>
+<section class="content-header">
+    <h1>Basic Tables</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Products</li>
+    </ol>
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Products</h4>
+                <a asp-controller="Product" asp-action="NewProduct" class="btn btn-info">New Product</a>
+                <div id="example_filter" class="dataTables_filter pull-right">
+                    <input class="form-control" id="placeholderInput" placeholder="Search" type="email">
+                </div>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">Id</th>
+                            <th class="sortable">Product Name</th>
+                            <th class="sortable">Category Id</th>
+                            <th>Amount</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td class="text-truncate">@item.ProductId</td>
+                            <td class="text-truncate">@item.ProductName</td>
+                            <td class="text-truncate">@item.CategoryId</td>
+                            <td class="text-truncate"><span class="lable-tag tag-success">@item.ProductPrice.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</span></td>
+                            <td><a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@item.ProductId" class="btn btn-danger">Delete</a></td>
+                            <td><a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@item.ProductId" class="btn btn-warning">Update</a></td>
+                        </tr>
+                    }
+                </table>
+                <ul class="pagination m-bot-0">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+﻿@model CreateCategoryDto
+<section class="content-header">
+    <h1>Form Layouts</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index" ><i class="fa fa-home"></i> Home</a></li>
+        <li><a  asp-controller="Category" asp-action="Index" ><i class="fa fa-envelope-o"></i> Category</a></li>
+        <li class="active"><i class="fa fa-envelope"></i> New Category</li>
+    </ol>
+</section>
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Create New Category</h4>
+        <form method="post" asp-action="NewCategory">
+            <div class="form-group">
+                <label asp-for="CategoryName" >Category Name</label>
+                <input type="text" class="form-control" asp-for="CategoryName" placeholder="Category Name">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
