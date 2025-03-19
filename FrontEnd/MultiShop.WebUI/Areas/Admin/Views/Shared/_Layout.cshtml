@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Component.InvokeAsync("_AdminLayoutHead")
+</head>
+<body class="sidebar-mini">
+        @await Component.InvokeAsync("_AdminPanelMainHeader")
+        @await Component.InvokeAsync("_AdminPanelSideBar")
+        <div class="content-wrapper">
+         @RenderBody()
+        </div>
+        <footer class="main-footer dark-bg">
+            Copyright &copy; 2025 Multi Shop. All rights reserved.
+        </footer>
+    <script src="~/admintemplate/html/dist/js/jquery.min.js"></script>
+    <script src="~/admintemplate/html/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/admintemplate/html/dist/js/ovio.js"></script>
+    <script src="~/admintemplate/html/plugins/charts/code/modules/exporting.js"></script>
+    <script src="~/admintemplate/html/plugins/charts/chart-functions.js"></script>
+</body>
+</html>

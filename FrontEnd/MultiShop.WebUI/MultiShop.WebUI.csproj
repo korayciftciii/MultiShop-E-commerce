@@ -7,7 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\admintemplate\html\app\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\charts\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\component\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\dist\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\forms\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\maps\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\pages\et-line-font\fonts\.DS_Store" />
+    <None Include="wwwroot\admintemplate\html\tables\et-line-font\fonts\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\Cargo\MultiShop.Cargo.DtoLayer\MultiShop.Cargo.DtoLayer.csproj" />
+    <ProjectReference Include="..\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj" />
   </ItemGroup>
 
 </Project>
