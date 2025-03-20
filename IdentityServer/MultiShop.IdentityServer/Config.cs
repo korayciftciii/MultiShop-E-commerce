@@ -52,7 +52,7 @@ public static class Config
             ClientName="Multi Shop Manager User",
             AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
             ClientSecrets={new Secret("multishopsecret".Sha256())},
-            AllowedScopes={ "CatalogReadPermission", "CatalogFullPermission" }
+            AllowedScopes={  "CatalogFullPermission" }
         },
         new Client
         {
@@ -60,7 +60,7 @@ public static class Config
               ClientName="Multi Shop Admin User",
             AllowedGrantTypes=GrantTypes.ResourceOwnerPassword,
             ClientSecrets={new Secret("multishopsecret".Sha256())},
-            AllowedScopes={ 
+            AllowedScopes={
                 "CatalogFullPermission",
                 "CatalogReadPermission",
                 "OrderReadPermission",
