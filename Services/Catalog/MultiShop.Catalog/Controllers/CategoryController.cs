@@ -47,6 +47,8 @@ namespace MultiShop.Catalog.Controllers
             await _categoryService.UpdateCategoryAsync(categoryDto);
             return Ok("Category Had Been Successfully Updated");
         }
-
+        
     }
 }
+
+
