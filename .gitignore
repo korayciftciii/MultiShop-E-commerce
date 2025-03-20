@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/IdentityServer/MultiShop.IdentityServer/Migrations/20250316152513_InitialIdentity.Designer.cs
+/IdentityServer/MultiShop.IdentityServer/Migrations/20250316152513_InitialIdentity.cs
