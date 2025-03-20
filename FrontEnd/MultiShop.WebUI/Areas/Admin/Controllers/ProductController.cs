@@ -17,7 +17,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         {
             _httpClientFactory = httpClientFactory;
         }
-        public async Task<List<SelectListItem>> GetCategories()
+        public async Task<List<SelectListItem>> GetCategoriesViewBag()
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7070/api/Category");
@@ -63,7 +63,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> NewProduct()
         {
-            ViewBag.Categories = await GetCategories();
+            ViewBag.Categories = await GetCategoriesViewBag();
             return View();
         }
 
@@ -92,7 +92,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             {
                 var JsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<UpdateProductDto>(JsonData);
-                ViewBag.Categories = await GetCategories();
+                ViewBag.Categories = await GetCategoriesViewBag();
 
                 return View(values);
             }
