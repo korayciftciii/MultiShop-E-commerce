@@ -1,0 +1,71 @@
+﻿@model CreateSpecialOfferDto
+<section class="content-header">
+    <h1>Create Slider</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li><a asp-controller="FeatureSlider" asp-action="Index"><i class="fa fa-home"></i> Special Offer</a></li>
+        <li class="active"><i class="fa fa-bars"></i> New Offer</li>
+    </ol>
+</section>
+
+
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>New Offer</h4>
+        <div class="row">
+            <form asp-action="NewSpecialOffer" method="post">
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="Title">Offer Title</label>
+                        <input class="form-control" asp-for="Title" type="text" required>
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="SubTitle">Sub Title</label>
+                        <input class="form-control" asp-for="SubTitle" type="text" required>
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="ImageUrl">Image Url</label>
+                        <input asp-for="ImageUrl" class="form-control" type="text" required>
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="DiscountRate">Discount Rate</label>
+                        <input asp-for="DiscountRate" class="form-control" type="text" required>
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="StartDate">Start Date:</label>
+                        <input type="datetime-local" asp-for="StartDate" required>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="EndDate">End Date:</label>
+                        <input type="datetime-local"asp-for="EndDate" required>
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Is Offer Will be Active?:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="IsActive" value="true">
+                        <label class="form-check-label">True</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" asp-for="IsActive" value="false">
+                        <label class="form-check-label">False</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+

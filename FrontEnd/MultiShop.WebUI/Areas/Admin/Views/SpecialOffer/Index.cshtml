@@ -1,0 +1,72 @@
+﻿@model List<ResultSpecialOfferDto>
+@{
+    int count = 0;
+}
+<section class="content-header">
+    <h1>Special Offers</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Special Offers</li>
+    </ol>
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Offer</h4>
+                <a asp-controller="SpecialOffer" asp-action="NewSpecialOffer" class="btn btn-info">New Offer</a>
+                <div id="example_filter" class="dataTables_filter pull-right">
+                    <input class="form-control" id="placeholderInput" placeholder="Search" type="email">
+                </div>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Offer Title</th>
+                            <th class="sortable">Offer Subtitle</th>
+                            <th>Discount Rate</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.Title</td>
+                            <td class="text-truncate">@item.SubTitle</td>
+                            <td class="text-truncate">@item.DiscountRate</td>
+                            <td class="text-truncate">&nbsp;-&nbsp; @(item?.StartDate.ToString("dd MMM yyyy") ?? "No Date")</td>
+                            <td class="text-truncate">&nbsp;-&nbsp; @(item?.EndDate.ToString("dd MMM yyyy") ?? "No Date")</td>
+                            <td class="text-truncate">
+                                @if (item.IsActive)
+                                {
+                                    <span class="lable-tag tag-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="lable-tag tag-unpaid">Passive</span>
+                                }
+                            </td>
+                            <td><a asp-controller="SpecialOffer" asp-action="DeleteSpecialOffer" asp-route-offerId="@item.SpecialOfferId" class="btn btn-danger">Delete</a></td>
+                            <td><a asp-controller="SpecialOffer" asp-action="UpdateSpecialOffer" asp-route-offerId="@item.SpecialOfferId" class="btn btn-warning">Update</a></td>
+                        </tr>
+                    }
+                </table>
+                <ul class="pagination m-bot-0">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
