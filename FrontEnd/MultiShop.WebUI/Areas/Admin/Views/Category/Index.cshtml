@@ -1,4 +1,8 @@
-﻿@model List<ResultCategoryDto>
+﻿﻿
+@model List<ResultCategoryDto>
+@{
+    int count = 0;
+}
 <section class="content-header">
     <h1>Basic Tables</h1>
     <ol class="breadcrumb">
@@ -15,7 +19,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>#</th>
                         <th>Category Name</th>
                         <th>Category's Products</th>
                         <th>Delete</th>
@@ -23,11 +27,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                
-                        @foreach(var item in Model)
-                        {
+
+                    @foreach(var item in Model)
+                    {
+                        count++;
                         <tr>
-                            <td>@item.CategoryId</td>
+                            <td>@count.ToString()</td>
                             <td>@item.CategoryName</td>
                             <td><a class="btn btn-warning" asp-controller="Category" asp-action="CategoryWithProducts" asp-route-categoryId="@item.CategoryId" >Products</a></td>
                             <td><a class="btn btn-danger" asp-controller="Category" asp-action="DeleteCategory" asp-route-categoryId="@item.CategoryId">Delete</a></td>

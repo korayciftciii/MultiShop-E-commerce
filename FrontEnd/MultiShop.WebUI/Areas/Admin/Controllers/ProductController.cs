@@ -50,12 +50,12 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var client=_httpClientFactory.CreateClient();
-            var responseMessage =await client.GetAsync("https://localhost:7070/api/Product");
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7070/api/Product/ProductListWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var JsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(JsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(JsonData);
                 return View(values);
             }
             return View();
@@ -113,5 +113,6 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+     
     }
 }

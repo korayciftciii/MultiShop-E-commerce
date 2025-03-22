@@ -1,20 +1,20 @@
-﻿@model List<ResultProductWithCategoryDto>
+﻿@model List<ResultFeatureSliderDto>
 @{
     int count = 0;
 }
 <section class="content-header">
-    <h1>Basic Tables</h1>
+    <h1>Feature Sliders</h1>
     <ol class="breadcrumb">
         <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
-        <li class="active"><i class="fa fa-bars"></i> Products</li>
+        <li class="active"><i class="fa fa-bars"></i> Feature Sliders</li>
     </ol>
 </section>
 <section class="content container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div class="chart-box">
-                <h4>Products</h4>
-                <a asp-controller="Product" asp-action="NewProduct" class="btn btn-info">New Product</a>
+                <h4>Sliders</h4>
+                <a asp-controller="FeatureSlider" asp-action="NewFeatureSlider" class="btn btn-info">New Slider</a>
                 <div id="example_filter" class="dataTables_filter pull-right">
                     <input class="form-control" id="placeholderInput" placeholder="Search" type="email">
                 </div>
@@ -22,9 +22,9 @@
                     <thead>
                         <tr>
                             <th class="sortable">#</th>
-                            <th class="sortable">Product Name</th>
-                            <th class="sortable">Category Name</th>
-                            <th>Amount</th>
+                            <th class="sortable">Slider Title</th>
+                            <th class="sortable">Slider Description</th>
+                            <th>Status</th>
                             <th>Delete</th>
                             <th>Update</th>
                         </tr>
@@ -34,11 +34,20 @@
                         count++;
                         <tr>
                             <td class="text-truncate">@count</td>
-                            <td class="text-truncate">@item.ProductName</td>
-                            <td class="text-truncate">@item.Category.CategoryName</td>
-                            <td class="text-truncate"><span class="lable-tag tag-success">@item.ProductPrice.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</span></td>
-                            <td><a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@item.ProductId" class="btn btn-danger">Delete</a></td>
-                            <td><a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@item.ProductId" class="btn btn-warning">Update</a></td>
+                            <td class="text-truncate">@item.Title</td>
+                            <td class="text-truncate">@item.Description</td>
+                            <td class="text-truncate">
+                                @if(item.Status)
+                                {
+                                    <span class="lable-tag tag-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="lable-tag tag-unpaid">Passive</span>
+                                }
+                            </td>
+                            <td><a asp-controller="FeatureSlider" asp-action="DeleteSlider" asp-route-sliderId="@item.SliderId" class="btn btn-danger">Delete</a></td>
+                            <td><a asp-controller="FeatureSlider" asp-action="UpdateFeatureSlider" asp-route-sliderId="@item.SliderId" class="btn btn-warning">Update</a></td>
                         </tr>
                     }
                 </table>
