@@ -24,7 +24,9 @@
                             <th class="sortable">#</th>
                             <th class="sortable">Product Name</th>
                             <th class="sortable">Category Name</th>
-                            <th>Amount</th>
+                            <th class="sortable">Creation Date</th>
+                            <th>Normal Price</th>
+                            <th>Discounted Price</th>
                             <th>Delete</th>
                             <th>Update</th>
                         </tr>
@@ -36,7 +38,9 @@
                             <td class="text-truncate">@count</td>
                             <td class="text-truncate">@item.ProductName</td>
                             <td class="text-truncate">@item.Category.CategoryName</td>
+                            <td class="text-truncate">&nbsp;-&nbsp; @(item?.CreationDate.ToString("dd MMM yyyy") ?? "No Date")</td>
                             <td class="text-truncate"><span class="lable-tag tag-success">@item.ProductPrice.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</span></td>
+                            <td class="text-truncate"><span class="lable-tag tag-success">@item.ProductDiscountedPrice.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</span></td>
                             <td><a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@item.ProductId" class="btn btn-danger">Delete</a></td>
                             <td><a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@item.ProductId" class="btn btn-warning">Update</a></td>
                         </tr>

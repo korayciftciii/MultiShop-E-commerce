@@ -21,6 +21,7 @@
                     <tr>
                         <th>#</th>
                         <th>Category Name</th>
+                         <th>Image </th>
                         <th>Category's Products</th>
                         <th>Delete</th>
                         <th>Update</th>
@@ -34,6 +35,7 @@
                         <tr>
                             <td>@count.ToString()</td>
                             <td>@item.CategoryName</td>
+                            <td>@item.ImageUrl</td>
                             <td><a class="btn btn-warning" asp-controller="Category" asp-action="CategoryWithProducts" asp-route-categoryId="@item.CategoryId" >Products</a></td>
                             <td><a class="btn btn-danger" asp-controller="Category" asp-action="DeleteCategory" asp-route-categoryId="@item.CategoryId">Delete</a></td>
                             <td><a class="btn btn-success" asp-controller="Category" asp-action="UpdateCategory" asp-route-categoryId="@item.CategoryId">Update</a></td>

@@ -1,0 +1,36 @@
+﻿@model UpdateServiceCardDto
+<section class="content-header">
+    <h1>Update Service Card</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li><a asp-controller="ServiceCard" asp-action="Index"><i class="fa fa-home"></i> Service Card</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Update Service Card</li>
+    </ol>
+</section>
+
+
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Update Service Card</h4>
+        <div class="row">
+            <form asp-action="UpdateServiceCard" method="post">
+                <input class="form-control" asp-for="FeatureId" type="hidden">
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="Title">Card Title</label>
+                        <input class="form-control" asp-for="Title" type="text">
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="Icon">Card Icon</label>
+                        <input class="form-control" asp-for="Icon" type="text">
+                    </fieldset>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -17,7 +17,7 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
             _SpecialOfferCollection = database.GetCollection<SpecialOffer>(databaseSettings.SpecialOfferCollectionName);
             _mapper = mapper;
         }
-        public async Task CreateSpecialOfferAsync(CreateSpeacialDto createSpeacialDto)
+        public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpeacialDto)
         {
             var value = _mapper.Map<SpecialOffer>(createSpeacialDto);
 
@@ -35,13 +35,13 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
             return _mapper.Map<GetByIdSpecialOfferDto>(value);
         }
 
-        public async Task<List<ResultSpeacialDto>> SpecialOfferListAsync()
+        public async Task<List<ResultSpecialOfferDto>> SpecialOfferListAsync()
         {
             var values = await _SpecialOfferCollection.Find(x => true).ToListAsync();
-            return _mapper.Map<List<ResultSpeacialDto>>(values);
+            return _mapper.Map<List<ResultSpecialOfferDto>>(values);
         }
 
-        public async Task UpdateSpecialOfferAsync(UpdateSpeacialDto updateSpeacialDto)
+        public async Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto updateSpeacialDto)
         {
             var value = _mapper.Map<SpecialOffer>(updateSpeacialDto);
             await _SpecialOfferCollection.FindOneAndReplaceAsync(x => x.SpecialOfferId.Equals(updateSpeacialDto.SpecialOfferId), value);

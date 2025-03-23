@@ -28,7 +28,7 @@ namespace MultiShop.Catalog.Controllers
             return Ok(value);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateSpecialOffer(CreateSpeacialDto specialOfferDto)
+        public async Task<IActionResult> CreateSpecialOffer(CreateSpecialOfferDto specialOfferDto)
         {
             await _specialOfferService.CreateSpecialOfferAsync(specialOfferDto);
             return Ok($"The {specialOfferDto.Title} Special Offer   had been successfully created ");
@@ -40,7 +40,7 @@ namespace MultiShop.Catalog.Controllers
             return Ok($"Offer number {id} had been successfully deleted");
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateSpecialOffer(UpdateSpeacialDto updateSpeacialDto)
+        public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpeacialDto)
         {
             await _specialOfferService.UpdateSpecialOfferAsync(updateSpeacialDto);
             return Ok("Special Offer Had Been Successfully Updated");
