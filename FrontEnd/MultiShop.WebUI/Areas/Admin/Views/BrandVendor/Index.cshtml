@@ -1,0 +1,64 @@
+﻿@model List<ResultBrandVendorDto>
+@{
+    int count = 0;
+}
+<section class="content-header">
+    <h1>Brand Vendors</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Brand Vendors</li>
+    </ol>
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Sliders</h4>
+                <a asp-controller="BrandVendor" asp-action="NewBrandVendor" class="btn btn-info">New  Vendor</a>
+                <div id="example_filter" class="dataTables_filter pull-right">
+                    <input class="form-control" id="placeholderInput" placeholder="Search" type="email">
+                </div>
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Brand Name</th>
+                            <th>Status</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.BrandName</td>
+                            <td class="text-truncate">
+                                @if (item.IsActive)
+                                {
+                                    <span class="lable-tag tag-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="lable-tag tag-unpaid">Passive</span>
+                                }
+                            </td>
+                            <td><a asp-controller="BrandVendor" asp-action="DeleteBrandVendor" asp-route-vendorId="@item.BrandId" class="btn btn-danger">Delete</a></td>
+                            <td><a asp-controller="BrandVendor" asp-action="UpdateBrandVendor" asp-route-vendorId="@item.BrandId" class="btn btn-warning">Update</a></td>
+                        </tr>
+                    }
+                </table>
+                <ul class="pagination m-bot-0">
+                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

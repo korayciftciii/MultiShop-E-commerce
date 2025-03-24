@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MultiShop.Catalog.Dtos.BrandVendor;
 using MultiShop.Catalog.Dtos.CategoryDtos;
 using MultiShop.Catalog.Dtos.FeatureSliderDtos;
 using MultiShop.Catalog.Dtos.GeneralOfferDtos;
@@ -54,6 +55,11 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<GeneralOffer,CreateGeneralOfferDto>().ReverseMap();
             CreateMap<GeneralOffer, UpdateGeneralOfferDto>().ReverseMap();
             CreateMap<GeneralOffer, GetByIdGeneralOfferDto>().ReverseMap();
+
+            CreateMap<BrandVendor, ResultBrandVendorDto>().ReverseMap();
+            CreateMap<BrandVendor, CreateBrandVendorDto>().ReverseMap();
+            CreateMap<BrandVendor, UpdateBrandVendorDto>().ReverseMap();
+            CreateMap<BrandVendor, GetByIdBrandVendorDto>().ReverseMap();
         }
 
     }
