@@ -1,0 +1,13 @@
+﻿@model List<ResultAboutUsFooterDto>
+
+
+<div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+    @foreach(var item in Model)
+    {
+        <h5 class="text-secondary text-uppercase mb-4">@item.Title</h5>
+        <p class="mb-4">@item.ShortDescription</p>
+        <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>@item.Address</p>
+        <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>@item.CompanyEmail</p>
+        <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>@item.CompanyPhoneNumber</p>
+    }
+</div>

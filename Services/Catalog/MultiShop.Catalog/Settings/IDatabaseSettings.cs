@@ -11,6 +11,7 @@
         public string ServiceCardCollectionName { get; set; }
         public string GeneralOfferCollectionName { get; set; }
         public string BrandVendorCollectionName { get; set; }
+        public string AboutUsFooterCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
 

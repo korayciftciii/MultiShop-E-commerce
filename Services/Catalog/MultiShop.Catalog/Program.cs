@@ -12,6 +12,7 @@ using MultiShop.Catalog.Services.SpecialOfferServices;
 using MultiShop.Catalog.Services.ServiceCardServices;
 using MultiShop.Catalog.Services.GeneralOfferServices;
 using MultiShop.Catalog.Services.BrandVendorServices;
+using MultiShop.Catalog.Services.AboutUsFooterServices;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGen(c =>
@@ -35,6 +36,7 @@ builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 builder.Services.AddScoped<IServiceCardService, ServiceCardService>();
 builder.Services.AddScoped<IGeneralOfferService, GeneralOfferService>();
 builder.Services.AddScoped<IBrandVendorService, BrandVendorService>();
+builder.Services.AddScoped<IAboutUsFooterService, AboutUsFooterService>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddScoped<IDatabaseSettings>(sp => { return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value; });
