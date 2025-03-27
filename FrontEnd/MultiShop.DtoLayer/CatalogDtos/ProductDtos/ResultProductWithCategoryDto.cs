@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultiShop.DtoLayer.CatalogDtos.ProductDto
+namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
 {
   public  class ResultProductWithCategoryDto
     {

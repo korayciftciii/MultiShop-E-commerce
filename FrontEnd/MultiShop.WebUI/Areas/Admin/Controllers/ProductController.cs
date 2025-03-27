@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
-using MultiShop.DtoLayer.CatalogDtos.ProductDto;
+using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;

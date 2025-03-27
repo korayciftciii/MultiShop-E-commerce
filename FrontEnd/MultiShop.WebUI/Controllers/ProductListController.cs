@@ -1,16 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace MultiShop.WebUI.Controllers
 {
+  
     public class ProductListController : Controller
     {
-        public IActionResult Index()
+        
+        private readonly IHttpClientFactory _clientFactory;
+
+        public ProductListController(IHttpClientFactory clientFactory)
         {
+            _clientFactory = clientFactory;
+        }
+
+        public IActionResult Index(string id)
+        {
+            ViewBag.CategoryId = id;
             return View();
         }
-        public IActionResult ProductDetail()
+
+   
+        public IActionResult ProductDetail(string id)
         {
+            ViewBag.ProductId = id;
             return View();
         }
+   
+
     }
 }
