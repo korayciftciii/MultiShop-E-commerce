@@ -22,10 +22,11 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
 
-   
-        public IActionResult ProductDetail(string id)
+
+        
+        public IActionResult ProductDetail( string productId)
         {
-            ViewBag.ProductId = id;
+            ViewBag.ProductId = productId;
             return View();
         }
    

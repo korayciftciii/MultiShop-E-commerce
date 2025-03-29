@@ -3,7 +3,7 @@
     @await Component.InvokeAsync("_NavBarCategoryList")
         <div class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
-                <a href="" class="text-decoration-none d-block d-lg-none">
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none d-block d-lg-none">
                     <span class="h1 text-uppercase text-dark bg-light px-2">Multi</span>
                     <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Shop</span>
                 </a>
@@ -12,9 +12,9 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a asp-controller="ProductList" asp-action="Index" class="nav-item nav-link">Home</a>
+                        <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
                         <a asp-controller="ProductList" asp-action="Index" class="nav-item nav-link">Products</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a asp-controller="Contact" asp-action="Index" class="nav-item nav-link">Contact</a>
                         <a href="contact.html" class="nav-item nav-link">Special Offers</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Multi Shop <i class="fa fa-angle-down mt-1"></i></a>
