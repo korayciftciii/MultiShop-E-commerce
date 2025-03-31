@@ -1,0 +1,36 @@
+﻿@model ResultProductImageDto
+
+<section class="content-header">
+    <h1>Create Product</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li><a asp-controller="Product" asp-action="Index"><i class="fa fa-home"></i> Products</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Product Images</li>
+    </ol>
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="chart-box">
+                <div id="js-grid-masonry" class="cbp">
+                    <div class="cbp-item graphic">
+                        <div class="cbp-caption-defaultWrap">
+                            <img src="@Model.Image1" alt="">
+                        </div>
+                    </div>
+                    <div class="cbp-item graphic">
+                        <div class="cbp-caption-defaultWrap">
+                            <img src="@Model.Image2" alt="">
+                        </div>
+                    </div>
+                    <div class="cbp-item graphic">
+                        <div class="cbp-caption-defaultWrap">
+                            <img src="@Model.Image3" alt="">
+                        </div>
+                    </div>
+                </div>
+                <a asp-action="UpdateProductImages" asp-controller="Product" asp-route-productId="@Model.ProductId" class="btn btn-primary mt-3">Update</a>
+            </div>
+        </div>
+    </div>
+</section>

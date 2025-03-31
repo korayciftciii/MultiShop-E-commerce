@@ -1,0 +1,42 @@
+﻿@model UpdateProductDetailsDto
+<section class="content-header">
+    <h1>Update Product Details</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li><a asp-controller="Product" asp-action="Index"><i class="fa fa-home"></i> Products</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Update Details</li>
+    </ol>
+</section>
+
+
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Update Product</h4>
+        <div class="row">
+            <form asp-action="UpdateProductDetail" method="post">
+                <input class="form-control" asp-for="ProductDetailId" type="hidden">
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label asp-for="ProductDescription">Product Description</label>
+                    <input class="form-control" asp-for="ProductDescription" type="text">
+                </fieldset>
+            </div>
+                <div class="col-md-4">
+                    <fieldset class="form-group">
+                        <label asp-for="ProductInfo">Additional Information:</label>
+                        <input type="text" class="form-control" asp-for="ProductInfo">
+                    </fieldset>
+                </div>
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label asp-for="ProductId">Product Id</label>
+                    <input class="form-control" asp-for="ProductId" type="hidden" >
+                </fieldset>
+            </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+

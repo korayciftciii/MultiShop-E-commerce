@@ -1,0 +1,27 @@
+﻿@model UpdateProductImageDto
+<section class="content-header">
+    <h1>Product Image Update</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li><a asp-controller="Product" asp-action="Index"><i class="fa fa-home"></i> Products</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Update Images</li>
+    </ol>
+</section>
+<section class="content container-fluid">
+    <form asp-action="UpdateImages" asp-controller="Product" method="post">
+        <input type="hidden" asp-for="ProductImageId" >
+        <div class="form-group">
+            <label asp-for="Image1">Image 1 URL</label>
+            <input type="text" asp-for="Image1" class="form-control" value="@Model.Image1">
+        </div>
+        <div class="form-group">
+            <label asp-for="Image2">Image 2 URL</label>
+            <input type="text" asp-for="Image2" class="form-control" value="@Model.Image2">
+        </div>
+        <div class="form-group">
+            <label asp-for="Image3">Image 3 URL</label>
+            <input type="text" asp-for="Image3" class="form-control" value="@Model.Image3">
+        </div>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+</section>
