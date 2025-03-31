@@ -13,11 +13,11 @@
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                                <a class="btn btn-outline-dark btn-square" asp-controller="ProductList" asp-action="ProductDetail" asp-route-productId="@item.ProductId"><i class="fa fa-search"></i></a>
+                                <a class="btn btn-outline-dark btn-square" asp-area="" asp-controller="ProductList" asp-action="ProductDetail" asp-route-productId="@item.ProductId"><i class="fa fa-search"></i></a>
                             </div>
                         </div>
                         <div class="text-center py-4">
-                            <a class="h6 text-decoration-none text-truncate" asp-controller="ProductList" asp-action="ProductDetail" asp-route-productId="@item.ProductId">@item.ProductName</a>
+                            <a class="h6 text-decoration-none text-truncate" asp-area="" asp-controller="ProductList" asp-action="ProductDetail" asp-route-productId="@item.ProductId">@item.ProductName</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 @if (item.ProductDiscountedPrice != null && item.ProductDiscountedPrice < item.ProductPrice)
                                 {

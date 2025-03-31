@@ -30,8 +30,8 @@
                 </div>
                 <div class="tab-content">
 
-                    @await Component.InvokeAsync("_ProductDetailDescription")
-                    @await Component.InvokeAsync("_ProductDetailInformation")
+                    @await Component.InvokeAsync("_ProductDetailDescription", new { id = ViewBag.ProductId })
+                    @await Component.InvokeAsync("_ProductDetailInformation", new { id = ViewBag.ProductId })
                     @await Component.InvokeAsync("_ProductDetailReviews")
                  
                     
