@@ -182,9 +182,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var response = await client.PutAsync("https://localhost:7070/api/ProductDetail/", stringContent);
             if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
-            }
+            {return RedirectToAction("Index", "Product", new { area = "Admin" });}
             return View();
         }
     }
