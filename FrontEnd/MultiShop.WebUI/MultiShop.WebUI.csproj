@@ -26,4 +26,8 @@
     <ProjectReference Include="..\MultiShop.DtoLayer\MultiShop.DtoLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Comment\" />
+  </ItemGroup>
+
 </Project>

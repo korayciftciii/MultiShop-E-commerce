@@ -1,5 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Cargo Api", Version = "v1" });
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -12,8 +15,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = string.Empty; // Swagger UI'yý kök dizine yerleþtirir
+    });
 }
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
