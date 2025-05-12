@@ -1,0 +1,62 @@
+﻿﻿
+@model List<ResultCommentDto>
+@{
+    int count = 0;
+}
+<section class="content-header">
+    <h1>Basic Tables</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Comment</li>
+    </ol>
+</section>
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Comment List</h4>
+        <div><a class="btn btn-info" asp-controller="Comment" asp-action="NewComment">Add New Comment</a></div>
+        <div class="bs-example" data-example-id="hoverable-table">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User Name</th>
+                        <th>Email </th>
+                        <th>Comment Content</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate" >@count.ToString()</td>
+                            <td class="text-truncate">@item.FullName</td>
+                            <td class="text-truncate">@item.Email</td>
+                            <td class="text-truncate">@item.CommentContent</td>
+                            <td class="text-truncate">&nbsp;-&nbsp; @(item?.CreatedAt.ToString("dd MMM yyyy") ?? "No Date")</td>
+                            <td class="text-truncate">
+                                @if (item.CommentStatus)
+                                {
+                                    <span class="lable-tag tag-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="lable-tag tag-unpaid">Passive</span>
+                                }
+                            </td>
+                            <td class="text-truncate"><a class="btn btn-danger" asp-controller="Comment" asp-action="DeleteComment" asp-route-commentId="@item.UserCommentId">Delete</a></td>
+                            <td class="text-truncate"><a class="btn btn-success" asp-controller="Comment" asp-action="UpdateComment" asp-route-commentId="@item.UserCommentId">Update</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -20,7 +20,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7075/api/Comment");
+            var responseMessage = await client.GetAsync("https://localhost:7075/api/Comments");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var JsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -42,7 +42,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createCommentDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7075/api/Comment", stringContent);
+            var response = await client.PostAsync("https://localhost:7075/api/Comments", stringContent);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Comment", new { area = "Admin" });
@@ -53,7 +53,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteComment([FromQuery(Name = "commentId")] int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync("https://localhost:7075/api/Comment/" + id);
+            var response = await client.DeleteAsync("https://localhost:7075/api/Comments/" + id);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Comment", new { area = "Admin" });
@@ -65,7 +65,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> UpdateComment([FromQuery(Name = "commentId")] int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7075/api/Commenty/" + id);
+            var responseMessage = await client.GetAsync("https://localhost:7075/api/Comments/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var JsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -81,7 +81,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCommentDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PutAsync("https://localhost:7075/api/Comment", stringContent);
+            var response = await client.PutAsync("https://localhost:7075/api/Comments/", stringContent);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "Comment", new { area = "Admin" });

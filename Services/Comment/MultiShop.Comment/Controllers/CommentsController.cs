@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Comment.Context;
 using MultiShop.Comment.Entities;
@@ -7,6 +8,7 @@ namespace MultiShop.Comment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class CommentsController : ControllerBase
     {
         private readonly CommentContext _context;
@@ -48,6 +50,16 @@ namespace MultiShop.Comment.Controllers
         public IActionResult GetCommentById(int id)
         {
             var value = _context.UserComments.Find(id);
+            if (value == null)
+            {
+                return NotFound();
+            }
+            return Ok(value);
+        }
+        [HttpGet("byProduct/{productId}")]
+        public IActionResult GetCommentByProductId(string productId)
+        {
+            var value = _context.UserComments.Where(x=> x.ProductId.Equals(productId));
             if (value == null)
             {
                 return NotFound();
