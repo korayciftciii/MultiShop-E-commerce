@@ -1,0 +1,64 @@
+﻿﻿
+@model List<ResultContactDto>
+@{
+    int count = 0;
+}
+<section class="content-header">
+    <h1>Basic Tables</h1>
+    <ol class="breadcrumb">
+        <li><a asp-controller="Home" asp-action="Index"><i class="fa fa-home"></i> Home</a></li>
+        <li class="active"><i class="fa fa-bars"></i> Contact</li>
+    </ol>
+</section>
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Contact List</h4>
+        <div><a class="btn btn-info" asp-controller="Contact" asp-action="NewContact">Add New Contact</a></div>
+        <div class="bs-example" data-example-id="hoverable-table">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Is Read</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count.ToString()</td>
+                            <td class="text-truncate">@item.FullName</td>
+                            <td class="text-truncate">@item.Email</td>
+                            <td class="text-truncate">@item.Subject</td>
+                           <td class="text-truncate">@item.Content</td>
+                            <td class="text-truncate">&nbsp;-&nbsp; @(item?.createdAt.ToString("dd MMM yyyy") ?? "No Date")</td>
+                            <td class="text-truncate">
+                                @if (item.IsRead)
+                                {
+                                    <span class="lable-tag tag-success">Checked</span>
+                                }
+                                else
+                                {
+                                    <span class="lable-tag tag-unpaid">Un Read</span>
+                                }
+                            </td>
+                            <td class="text-truncate"><a class="btn btn-danger" asp-controller="Contact" asp-action="DeleteContact" asp-route-contacId="@item.ContactId">Delete</a></td>
+                            <td class="text-truncate"><a class="btn btn-success" asp-controller="Contact" asp-action="UpdateContact" asp-route-contactId="@item.ContactId">Update</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

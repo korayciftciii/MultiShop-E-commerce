@@ -13,6 +13,7 @@ using MultiShop.Catalog.Services.ServiceCardServices;
 using MultiShop.Catalog.Services.GeneralOfferServices;
 using MultiShop.Catalog.Services.BrandVendorServices;
 using MultiShop.Catalog.Services.AboutUsFooterServices;
+using MultiShop.Catalog.Services.ContactServices;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGen(c =>
@@ -33,6 +34,7 @@ builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
 builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 builder.Services.AddScoped<IServiceCardService, ServiceCardService>();
 builder.Services.AddScoped<IGeneralOfferService, GeneralOfferService>();
 builder.Services.AddScoped<IBrandVendorService, BrandVendorService>();

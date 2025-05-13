@@ -2,6 +2,7 @@
 using MultiShop.Catalog.Dtos.AboutUsFooter;
 using MultiShop.Catalog.Dtos.BrandVendor;
 using MultiShop.Catalog.Dtos.CategoryDtos;
+using MultiShop.Catalog.Dtos.Contact;
 using MultiShop.Catalog.Dtos.FeatureSliderDtos;
 using MultiShop.Catalog.Dtos.GeneralOfferDtos;
 using MultiShop.Catalog.Dtos.ProductDetailDtos;
@@ -66,6 +67,11 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<AboutUsFooter, CreateAboutUsFooterDto>().ReverseMap();
             CreateMap<AboutUsFooter, UpdateAboutUsFooterDto>().ReverseMap();
             CreateMap<AboutUsFooter,GetByIdAboutUsFooterDto>().ReverseMap();
+
+            CreateMap<Contact, ResultContactDto>().ReverseMap();
+            CreateMap<Contact,CreateContactDto>().ReverseMap();
+            CreateMap<Contact,UpdateContactDto>().ReverseMap();
+            CreateMap<Contact,GetContactByIdDto>().ReverseMap();
         }
 
     }
