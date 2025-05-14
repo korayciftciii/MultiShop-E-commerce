@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.GeneralOfferDtos;
 using MultiShop.Catalog.Services.GeneralOfferServices;
@@ -6,6 +7,7 @@ using MultiShop.Catalog.Services.SpecialOfferServices;
 
 namespace MultiShop.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class GeneralOfferController : ControllerBase

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ServiceCardDtos;
 using MultiShop.Catalog.Entities;
@@ -6,6 +7,7 @@ using MultiShop.Catalog.Services.ServiceCardServices;
 
 namespace MultiShop.Catalog.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ServiceCardController : ControllerBase
