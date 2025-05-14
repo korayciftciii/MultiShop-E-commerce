@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+}
+@model LoginDto
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>MultiShop Kayıt Paneli</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/multishop-1.0.0/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/multishop-1.0.0/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/multishop-1.0.0/css/style.css" rel="stylesheet">
+</head>
+<body class="form-v4">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 bg-white p-4 shadow rounded">
+                <div class="row">
+                    <!-- Sol Bilgilendirme Alanı -->
+                    <div class="col-md-5 border-end">
+                        <h2 class="mb-3">MultiShop E-Ticaret</h2>
+                        <p>MultiShop projemiz üzerinden e-ticaret işlemlerini gerçekleştirebilmek, indirimli ürünler ve fırsatlardan haberdar olmak adına 1 dakikada kayıt işlemini gerçekleştirin.</p>
+                        <p>Eğer bir hesabınız varsa kayıt olmaya gerek duymadan aşağıdaki link üzerinden hemen giriş sayfasına gidebilirsiniz.</p>
+                        <a asp-controller="Login" asp-action="Index" class="btn btn-outline-primary mt-3">Giriş Yap</a>
+                    </div>
+
+                    <!-- Kayıt Formu -->
+                    <div class="col-md-7">
+                        <h2 class="mb-4">MultiShop</h2>
+                        <form method="post">
+                            <div class="row mb-3">
+                            <div class="mb-3">
+                                <label for="your_username" class="form-label">Kullanıcı Adınız</label>
+                                <input type="text" class="form-control" asp-for="userName" id="your_username" required>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="password" class="form-label">Şifre</label>
+                                    <input type="password" class="form-control" asp-for="password" id="password" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label asp-for="isPersistence" class="form-label">Remember me</label>
+                                    <input type="checkbox" name="isPersistence" class="form-control" asp-for="isPersistence" value="true" />
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/multishop-1.0.0/lib/easing/easing.min.js"></script>
+    <script src="~/multishop-1.0.0/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <!-- Contact Javascript File -->
+    <script src="~/multishop-1.0.0/mail/jqBootstrapValidation.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/multishop-1.0.0/js/main.js"></script>
+    <script>
+        // just for the demos, avoids form submit
+        jQuery.validator.setDefaults({
+            debug: true,
+            success: function (label) {
+                label.attr('id', 'valid');
+            },
+        });
+        $("#myform").validate({
+            rules: {
+                password: "required",
+                comfirm_password: {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                first_name: {
+                    required: "Please enter a firstname"
+                },
+                last_name: {
+                    required: "Please enter a lastname"
+                },
+                your_email: {
+                    required: "Please provide an email"
+                },
+                password: {
+                    required: "Please enter a password"
+                },
+                comfirm_password: {
+                    required: "Please enter a password",
+                    equalTo: "Wrong Password"
+                }
+            }
+        });
+    </script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
