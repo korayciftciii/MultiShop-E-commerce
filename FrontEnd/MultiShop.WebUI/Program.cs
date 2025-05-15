@@ -1,5 +1,9 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Concrete;
+using MultiShop.WebUI.Services.Interfaces;
+using MultiShop.WebUI.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,14 +15,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.LoginPath = "/Login";
     opt.LogoutPath = "/Login/Logout";
     opt.AccessDeniedPath = "/pages/AccessDenied";
-    opt.Cookie.HttpOnly = true;
     opt.Cookie.SameSite = SameSiteMode.Strict;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
     opt.Cookie.Name = "MultiShopCookie";
 });
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt => 
+{
+    opt.LoginPath = "/Login";
+    opt.ExpireTimeSpan=TimeSpan.FromDays(1);
+    opt.Cookie.Name = "MultiShopCookie";
+    opt.SlidingExpiration = true;
+
+});
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 builder.Services.AddHttpClient();
+builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

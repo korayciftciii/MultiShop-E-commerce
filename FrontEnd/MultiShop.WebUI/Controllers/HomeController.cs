@@ -1,22 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.WebUI.Services;
+using System.Security.Claims;
 
 namespace MultiShop.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILoginService _loginService;
+
+        private readonly ILoginService loginService;
 
         public HomeController(ILoginService loginService)
         {
-            _loginService = loginService;
+            this.loginService = loginService;
         }
 
-        public IActionResult Index()
-        {
-           
-
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }
