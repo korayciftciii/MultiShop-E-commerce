@@ -1,7 +1,15 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.Comment.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<CommentContext>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "resourceComment";
+    opt.RequireHttpsMetadata = true;
+}
+);
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Comment Api", Version = "v1" });
