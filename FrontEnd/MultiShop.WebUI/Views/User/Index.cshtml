@@ -1,0 +1,13 @@
+﻿@model UserDetailViewModel
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<h1>User Info</h1>
+<div class="container">
+    <div class="alert alert-info">@Model.Id</div>
+   <div class="alert alert-info">@Model.UserName</div>
+    <div class="alert alert-info">@Model.Name</div>
+     <div class="alert alert-info">@Model.Surname</div>
+      <div class="alert alert-info">@Model.Email</div>
+</div>

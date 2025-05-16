@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.WebUI.Services;
+using MultiShop.WebUI.Services.Interfaces;
 using System.Security.Claims;
 
 namespace MultiShop.WebUI.Controllers
