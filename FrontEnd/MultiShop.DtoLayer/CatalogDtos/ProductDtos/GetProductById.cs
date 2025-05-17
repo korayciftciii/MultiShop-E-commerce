@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MultiShop.DtoLayer.CatalogDtos.ProductDtos
 {
-public    class GetByProductIdDto
+public    class GetProductIBydDto
     {
         public string ProductId { get; set; }
         public string ProductName { get; set; }

@@ -51,7 +51,8 @@ public static class Config
             ClientName="Multi Shop Visitor User",
             AllowedGrantTypes=GrantTypes.ClientCredentials,
             ClientSecrets={new Secret("multishopsecret".Sha256())},
-            AllowedScopes={ "CatalogFullPermission", "DiscountFullPermission" , "OcelotFullPermission","CommentFullPermission" ,"ImageFullPermission", "CargoFullPermission","OrderFullPermission"}
+            AllowedScopes={ "CatalogFullPermission", "DiscountFullPermission" , "OcelotFullPermission","CommentFullPermission" ,"ImageFullPermission", "CargoFullPermission","OrderFullPermission",IdentityServerConstants.LocalApi.ScopeName}
+            
         },
         //manager
         new Client

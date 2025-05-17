@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="CatalogDtos\ProductDtos\GetProductById.cs" />
+  </ItemGroup>
+
 </Project>

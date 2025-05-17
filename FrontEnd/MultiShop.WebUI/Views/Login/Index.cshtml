@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model LoginDto
+@model SigninDto
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,20 +46,20 @@
                         <form method="post">
                             <div class="row mb-3">
                             <div class="mb-3">
-                                <label for="your_username" class="form-label">Kullanıcı Adınız</label>
-                                <input type="text" class="form-control" asp-for="userName" id="your_username" required>
+                                <label asp-for="UserName" class="form-label">Kullanıcı Adınız</label>
+                                <input type="text" class="form-control" asp-for="UserName" id="your_username" required>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="password" class="form-label">Şifre</label>
-                                    <input type="password" class="form-control" asp-for="password" id="password" required>
+                                    <label asp-for="Password" class="form-label">Şifre</label>
+                                    <input type="password" class="form-control" asp-for="Password" id="password" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label asp-for="isPersistence" class="form-label">Remember me</label>
-                                    <input type="checkbox" name="isPersistence" class="form-control" asp-for="isPersistence" value="true" />
+                                    <label asp-for="IsPersistence" class="form-label">Remember me</label>
+                                    <input type="checkbox" name="isPersistence" class="form-control" asp-for="IsPersistence" value="true" />
                                 </div>
                             </div>
                             <div class="d-grid">

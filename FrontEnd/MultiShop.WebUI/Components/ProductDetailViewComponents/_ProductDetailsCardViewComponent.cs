@@ -22,7 +22,7 @@ namespace MultiShop.WebUI.Components.ProductDetailViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var JsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetByProductIdDto>(JsonData);
+                var values = JsonConvert.DeserializeObject<GetProductIBydDto>(JsonData);
                 return View(values);
             }
             return View();

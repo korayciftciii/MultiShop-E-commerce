@@ -29,26 +29,10 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Index(LoginDto loginDto)
+        public async Task<IActionResult> Index(SigninDto signinDto)
         {
-            
-            return View();
-
-        }
-
-        //[HttpGet]
-        //public IActionResult SignIn()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        public async Task<IActionResult> SignIn(SigninDto signinDto)
-        {
-            signinDto.UserName = "korayCiftci";
-            signinDto.Password = "#Rtz45Sky";
-            signinDto.IsPersistence = false;
             await _identityService.Signin(signinDto);
             return RedirectToAction("Index", "User");
-         }
+        }
     }
 }
