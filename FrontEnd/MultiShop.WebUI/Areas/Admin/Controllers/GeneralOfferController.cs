@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.GeneralOfferDtos;
+using MultiShop.WebUI.Services.CatalogServices.GeneralOfferServices;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -9,23 +10,18 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     public class GeneralOfferController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IGeneralOfferService _generalOfferService;
 
-        public GeneralOfferController(IHttpClientFactory httpClientFactory)
+        public GeneralOfferController(IHttpClientFactory httpClientFactory, IGeneralOfferService generalOfferService)
         {
             _httpClientFactory = httpClientFactory;
+            _generalOfferService = generalOfferService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/GeneralOffer");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var JsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultGeneralOfferDto>>(JsonData);
-                return View(values);
-            }
-            return View();
+        var value=await _generalOfferService.GeneralOfferListAsync();
+            return value is not null ? View(value) : View();
         }
         [HttpGet]
 
@@ -37,54 +33,31 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> NewGeneralOffer(CreateGeneralOfferDto generalOfferDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(generalOfferDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7070/api/GeneralOffer", stringContent);
-            if (response.IsSuccessStatusCode)
-            {
+            await _generalOfferService.CreateGeneralOfferAsync(generalOfferDto);
                 return RedirectToAction("Index", "GeneralOffer", new { area = "Admin" });
-            }
-            return View();
+            
         }
         [HttpGet]
         public async Task<IActionResult> DeleteGeneralOffer([FromQuery(Name = "generalOfferId")] string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync("https://localhost:7070/api/GeneralOffer/" + id);
-            if (response.IsSuccessStatusCode)
-            {
+            await _generalOfferService.DeleteGeneralOfferAsync(id);
                 return RedirectToAction("Index", "GeneralOffer", new { area = "Admin" });
-            }
-            return View();
+            
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateGeneralOffer([FromQuery(Name = "generalOfferId")] string id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7070/api/GeneralOffer/" + id);
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var JsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateGeneralOfferDto>(JsonData);
-                return View(values);
-            }
-            return View();
+           var value =await _generalOfferService.GetGeneralOfferByIdAsync(id);
+            return value is not null ? View(value) : View();
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateGeneralOffer([FromForm] UpdateGeneralOfferDto generalOfferDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(generalOfferDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PutAsync("https://localhost:7070/api/GeneralOffer", stringContent);
-            if (response.IsSuccessStatusCode)
-            {
+            await _generalOfferService.UpdateGeneralOfferAsync(generalOfferDto);
                 return RedirectToAction("Index", "GeneralOffer", new { area = "Admin" });
-            }
-            return View();
+            
         }
     }
 }

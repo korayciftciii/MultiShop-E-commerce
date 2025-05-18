@@ -1,4 +1,5 @@
 ﻿using MultiShop.DtoLayer.CatalogDtos.ProductDetailDtos;
+using Newtonsoft.Json;
 
 namespace MultiShop.WebUI.Services.CatalogServices.ProductDetailServices
 {
@@ -30,23 +31,29 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductDetailServices
         public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
         {
             var responseMessage = await _httpClient.GetAsync($"ProductDetail/{id}");
-            if (!responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
-                throw new HttpRequestException($"An error occured while getting product's detail. StatusCode: {responseMessage.StatusCode}");
+                var jsonData=await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<GetByIdProductDetailDto>(jsonData);
+                return value != null ? value : throw new NullReferenceException();
             }
-            var value= await responseMessage.Content.ReadFromJsonAsync<GetByIdProductDetailDto>();
-            return value != null ? value : throw new NullReferenceException();
+            else
+                throw new HttpRequestException($"An error occured while getting product's detail. StatusCode: {responseMessage.StatusCode}");
+           
         }
 
         public async Task<UpdateProductDetailsDto> GetProductDetailsForUpdate(string id)
         {
             var responseMessage = await _httpClient.GetAsync($"ProductDetail/{id}");
-            if (!responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
-                throw new HttpRequestException($"An error occured while getting product's detail. StatusCode: {responseMessage.StatusCode}");
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateProductDetailsDto>(jsonData);
+                return value != null ? value : throw new NullReferenceException();
             }
-            var value = await responseMessage.Content.ReadFromJsonAsync<UpdateProductDetailsDto>();
-            return value != null ? value : throw new NullReferenceException();
+            else
+                throw new HttpRequestException($"An error occured while getting product's detail. StatusCode: {responseMessage.StatusCode}");
+
         }
 
         public async Task UpdateProductDetailsAsync(UpdateProductDetailsDto updateProductDetailDto)

@@ -56,7 +56,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
 
         public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryAsync()
         {
-            var responseMessage = await _httpClient.GetAsync("Product/productlistwithcategory");
+            var responseMessage = await _httpClient.GetAsync("Product");
 
             if (!responseMessage.IsSuccessStatusCode)
             {
@@ -70,7 +70,7 @@ namespace MultiShop.WebUI.Services.CatalogServices.ProductServices
 
         public async Task<List<ResultProductWithCategoryDto>> GetProductsWithCategoryIdAsync(string id)
         {
-            var responseMessage = await _httpClient.GetAsync($"Product/productlistwithcategoryId/{id}");
+            var responseMessage = await _httpClient.GetAsync($"product/productlistwithcategoryId?id={id}");
 
             if (!responseMessage.IsSuccessStatusCode)
             {

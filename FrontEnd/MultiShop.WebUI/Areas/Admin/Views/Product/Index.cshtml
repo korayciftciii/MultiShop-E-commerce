@@ -1,4 +1,5 @@
-﻿@model List<ResultProductWithCategoryDto>
+﻿@*  @model List<ResultProductWithCategoryDto>   *@
+     @model List<ResultProductDto>  
 @{
     int count = 0;
 }
@@ -18,7 +19,37 @@
                 <div id="example_filter" class="dataTables_filter pull-right">
                     <input class="form-control" id="placeholderInput" placeholder="Search" type="email">
                 </div>
-                <table class="table table-responsive">
+               <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="sortable">#</th>
+                            <th class="sortable">Product Name</th>
+                            <th class="sortable">Creation Date</th>
+                            <th>Normal Price</th>
+                            <th>Discounted Price</th>
+                            <th>Details</th>
+                            <th>Images</th>
+                            <th>Delete</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td class="text-truncate">@count</td>
+                            <td class="text-truncate">@item.ProductName</td>
+                            <td class="text-truncate">&nbsp;-&nbsp; @(item?.CreationDate.ToString("dd MMM yyyy") ?? "No Date")</td>
+                            <td class="text-truncate"><span class="lable-tag tag-success">@item.ProductPrice.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</span></td>
+                            <td class="text-truncate"><span class="lable-tag tag-success">@item.ProductDiscountedPrice.ToString("C", System.Globalization.CultureInfo.CurrentCulture)</span></td>
+                            <td><a asp-controller="Product" asp-action="UpdateProductDetail" asp-route-productId="@item.ProductId" class="btn btn-success">Details</a></td>
+                            <td><a asp-controller="Product" asp-action="ProductImages" asp-route-productId="@item.ProductId" class="btn btn-info">Images</a></td>
+                            <td><a asp-controller="Product" asp-action="DeleteProduct" asp-route-productId="@item.ProductId" class="btn btn-danger">Delete</a></td>
+                            <td><a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@item.ProductId" class="btn btn-warning">Update</a></td>
+                        </tr>
+                    }
+                </table>  
+           @*        <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th class="sortable">#</th>
@@ -49,7 +80,7 @@
                             <td><a asp-controller="Product" asp-action="UpdateProduct" asp-route-productId="@item.ProductId" class="btn btn-warning">Update</a></td>
                         </tr>
                     }
-                </table>
+                </table>   *@
                 <ul class="pagination m-bot-0">
                     <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li>
                     <li><a href="#">1</a></li>

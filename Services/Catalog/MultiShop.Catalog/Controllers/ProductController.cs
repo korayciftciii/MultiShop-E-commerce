@@ -6,7 +6,7 @@ using MultiShop.Catalog.Services.ProductServices;
 
 namespace MultiShop.Catalog.Controllers
 {
-   //[Authorize]
+   [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -48,13 +48,13 @@ namespace MultiShop.Catalog.Controllers
             return Ok("Product Had Been Successfully Updated");
         }
         [HttpGet("productlistwithcategory")]
-        public async Task<IActionResult> productlistwithcategory()
+        public async Task<IActionResult> ProductlistWithCategory()
         {
          var item=   await _productService.GetProductsWithCategoryAsync();
             return Ok(item);
         }
         [HttpGet("productlistwithcategoryId")]
-        public async Task<IActionResult> productlistwithcategoryId(string id)
+        public async Task<IActionResult> ProductlistWithCategoryId(string id)
         {
             var item = await _productService.GetProductsWithCategoryIdAsync(id);
             return Ok(item);

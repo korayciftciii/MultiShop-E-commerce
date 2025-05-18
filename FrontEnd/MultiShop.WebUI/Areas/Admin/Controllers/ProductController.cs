@@ -50,7 +50,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-          var values=await _productService.GetProductsWithCategoryAsync();
+          var values=await _productService.GetAllProductsAsync();
                 return View(values);
         }
 
